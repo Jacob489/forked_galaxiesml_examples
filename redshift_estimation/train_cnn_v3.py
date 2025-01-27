@@ -39,7 +39,7 @@ if gpus:
         print(e)
         
       
-image_size = 127
+image_size = " "
 image_size_str = str(image_size)
 
 IMAGE_SHAPE = (5, image_size, image_size)
@@ -57,9 +57,11 @@ hparams = {
 }
 
 
-TRAIN_PATH = f'/data/HSC/HSC_v6/step2A/{image_size_str}x{image_size_str}/5x{image_size_str}x{image_size_str}_training_with_morphology.hdf5'
-VAL_PATH = f'/data/HSC/HSC_v6/step2A/{image_size_str}x{image_size_str}/5x{image_size_str}x{image_size_str}_validation_with_morphology.hdf5'
-TEST_PATH = f'/data/HSC/HSC_v6/step2A/{image_size_str}x{image_size_str}/5x{image_size_str}x{image_size_str}_testing_with_morphology.hdf5'
+TRAIN_PATH = f'E:/Datasets/5x64x64_training_with_morphology.hdf5'
+VAL_PATH = f'E:/Datasets/5x64x64_validation_with_morphology.hdf5'
+TEST_PATH = f'E:/Datasets/5x64x64_testing_with_morphology.hdf5'
+
+
 
 with h5py.File(TRAIN_PATH, 'r') as f:
     train_len = len(f['specz_redshift'])
