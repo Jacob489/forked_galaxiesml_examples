@@ -7,8 +7,7 @@ The dataset is publicly available on **Zenodo** with the DOI: **[10.5281/zenodo.
 ## Examples
 
 - Redshift estimation - example of redshift estimation using photometry with a fully connected neural network and with images using a convolutional neural network (CNN).
-- CUDA 11.2 required
-
+ 
 
 # Table of Contents
 - [Examples](#examples)
@@ -72,7 +71,7 @@ The dataset is publicly available on **Zenodo** with the DOI: **[10.5281/zenodo.
 
 > **Note**: The application uses GPU memory management and data generators to optimize resource utilization. Performance may vary based on specific hardware configurations and concurrent system load. 
 
-### **Prologue**: Setting Everything Up
+# **Prologue**: *Setting Everything Up*
 
 You will need do download the datasets from the link above (5x127x127 or 5x64x64):
 
@@ -80,14 +79,14 @@ You will need do download the datasets from the link above (5x127x127 or 5x64x64
 - 5x64x64_validation_with_morphology.hdf5
 - 5x64x64_testing_with_morphology.hdf5
 
-### **Prerequisites**:
+## **Prerequisites**:
 
 - Visual Studio Code installed
 - MiniConda Installed (Miniconda3-py310_24.9.2-0)
 
  
 
-### 1. **Clone the Github repository**
+# 1. **Clone the Github repository**
 
 Clone the Github Repository into Visual Studio Code:
 
@@ -113,7 +112,7 @@ Clone the Github Repository into Visual Studio Code:
 
    ![Trust](setup_images/image-10.png)
 
-### 2. **Install Miniconda**
+# 2. **Install Miniconda**
 
 Miniconda is a lightweight distribution of Conda, a package manager, and environment manager designed for Python and other programming languages. You will need to install Miniconda for Python 3.10.
 
@@ -127,7 +126,7 @@ Miniconda is a lightweight distribution of Conda, a package manager, and environ
 
 ![MiniCondaInstallation](setup_images/image-6.png)
 
-### 3. **Miniconda Environment Creation**
+# 3. **Miniconda Environment Creation**
 
 1. Open a new CMD terminal in VS Code:
 
@@ -164,7 +163,7 @@ Not like this (Powershell):
 
    ![SelectYes](setup_images/image-8.png)
 
-### 4. **Miniconda Environment Activation/CUDA Installation**
+# 4. **Miniconda Environment Activation/CUDA Installation**
 
 1. Open Command Palette (CTRL + SHIFT + P)
 2. Type "Python: Select Interpreter" and select Python 3.10.16 (tf210)
@@ -193,7 +192,7 @@ Not like this (Powershell):
 
    ![Yes](setup_images/image-19.png)
 
-### 5. **Install Dependencies**
+# 5. **Install Dependencies**
 
 1. Install requirements:
    ```
@@ -211,7 +210,7 @@ Not like this (Powershell):
 
    *Note: An empty list ([]) indicates TensorFlow is not detecting the GPU.*
 
-### 6. **Configure Training File**
+# 6. **Configure Training File**
 
 1. Open the train_cnn_v3.py file
 2. Update the dataset paths to where you installed them, for example:
@@ -220,7 +219,7 @@ Not like this (Powershell):
 
 3. Save the file (CTRL + S)
 
-### 7. **Run the Training Script**
+# 7. **Run the Training Script**
 
 1. Navigate to the correct directory:
    ```
@@ -232,7 +231,7 @@ Not like this (Powershell):
    python train_cnn_v3.py --image_size 64 --epochs 200 --batch_size 256 --learning_rate 0.0001
    ```
 
-#### Training Parameters:
+### Training Parameters:
 - **--image_size**: Set to 64 or 127 depending on the dataset you downloaded
 - **--epochs**: Number of training epochs (default: 200)
 - **--batch_size**: Number of samples per training batch (default: 256)
