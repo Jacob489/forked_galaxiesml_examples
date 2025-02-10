@@ -196,7 +196,7 @@ Not like this (Powershell):
 
 1. Install requirements:
    ```
-   pip install -r requirements.txt
+   pip install -r requirementsW.txt
    ```
 
 2. Verify CUDA installation:
@@ -238,3 +238,174 @@ Not like this (Powershell):
 - **--learning_rate**: Learning rate for training (default: 0.0001)
 
 Training progress will be displayed in the terminal, including loss values and other metrics. Checkpoints will be saved automatically during training. If using TensorBoard, logs will be available in /data2/logs/. Once training is complete, the trained model weights will be stored in /data2/models/.
+
+
+
+# Linux instructions:
+
+## Check Prerequisites:
+
+## Open Terminal
+* Press Ctrl + Alt + T to open a terminal window
+
+* Or find "Terminal" in your system's application menu
+
+## Install Git
+First, we'll install Git:
+
+```
+sudo apt update
+```
+
+```
+sudo apt install git
+```
+
+```
+git --version  
+```
+(verify it has installed successfully)
+
+## Check/install GPU drivers
+
+*	Next, check if you have the required NVIDIA drivers installed:
+
+```
+nvidia-smi
+```
+
+You should see something like this:
+
+![GPUInfo](setup_images/Linux5.png)
+
+This shows your GPU information. If you see this and you see a driver verion greater than 450.80.02, you can skip the following steps. 
+
+* If you don’t see something similar to the above image you’ll need to install NVIDIA drivers: 
+
+```
+sudo apt update
+```
+```
+sudo apt install nvidia-driver-535
+```
+**Note:** Depending on your GPU model and Linux distribution, you might need a different driver version. You can check available versions with:
+```
+ubuntu-drivers devices
+```
+**Note:** For compatibility with CUDA 11.8 and TensorFlow 2.11, you need a NVIDIA driver version at least greater than 450.80.02.  
+
+
+## Installing Miniconda:
+
+* Create/navigate to a directory for your miniconda installation
+*Example:*
+
+```
+mkdir ~/Downloads
+```
+```
+cd ~/Downloads
+```
+* Install Miniconda:
+
+```
+wget https://repo.anaconda.com/miniconda/Miniconda3-py310_24.9.2-0-Linux-x86_64.sh
+
+```
+```
+chmod +x Miniconda3-py310_24.9.2-0-Linux-x86_64.sh
+```
+```
+./Miniconda3-py310_24.9.2-0-Linux-x86_64.sh
+```
+* Press enter when prompted (hold enter key to scroll through terms and conditions)
+
+![Miniconda](setup_images/Linux1.png)
+ 
+
+* When you get to the end type “yes” and press enter when prompted
+
+![Miniconda2](setup_images/Linux2.png)
+
+It will say something like: 
+
+"Confirm the installation location: 
+
+Miniconda3 will now be installed into this location:
+/home/your_username/miniconda3
+
+  - Press ENTER to confirm the location
+  - Press CTRL-C to abort the installation
+  - Or specify a different location below
+
+"
+
+* As the message indicates, you can choose to paste a separate path or press enter to confirm the current default installation location. 
+
+* When prompted, type “no” into the terminal. 
+ 
+ 
+![Miniconda3](setup_images/Linux3.png)
+
+* It should now say “Thank you for installing Miniconda3!” 
+ 
+* Verify Miniconda has been successfully installed by typing the command:
+```
+/home/your_username/miniconda3/bin/conda –-version
+```
+*(make sure to replace with your specific path)*
+
+* You should see a version number like “conda 24.9.2” which indicates Miniconda has been successfully installed
+
+# Conda Environment Creation/Activation
+
+* Now we need to create a new conda environment using Python 3.10
+
+Type 
+```
+/home/your_username/miniconda3/bin/conda create -n galaxies python=3.10
+
+```
+*(replace with your path)*
+
+Type “y” and then enter when prompted
+
+* Next we need to activate the environment. 
+
+Type:
+
+```
+source /home/your_username/miniconda3/bin/activate galaxies
+```
+*(replace with your actual path to your miniconda3 folder)*
+
+and press enter
+
+* You should now see “galaxies” in front of your terminal, indicating the environment has been successfully activated 
+
+*Example:*
+
+![Miniconda4](setup_images/Linux4.png)
+
+## Installing CUDA and cuDNN
+
+* Next we need to install the compatible CUDA and cudNN versions for this project
+
+Type:
+```
+/home/your_username/miniconda3/bin/conda install -c conda-forge cudatoolkit=11.8 cudnn=8.4
+```
+* Type "y" when prompted and press enter
+
+* CUDA and cuDNN should now successfully be installed, to confirm type:
+``` 
+nvcc --version
+```
+which should return a CUDA version.
+
+## Cloning the Repository
+* Now we need to clone the GitHub repo
+
+* If you are in the miniconda3 folder, navigate out of it to an appropriate folder to clone the repo, for example: "/home/your_username/downloads"
+
+* Next, type git clone (HTTPS link to repo) for example: "https://github.com/astrodatalab/galaxiesml_examples.git"
