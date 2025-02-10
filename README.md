@@ -276,7 +276,7 @@ nvidia-smi
 
 You should see something like this:
 
-![GPUInfo](setup_images/Linux5.png)
+![GPUInfo](setup_images/Linux5.PNG)
 
 This shows your GPU information. If you see this and you see a driver verion greater than 450.80.02, you can skip the following steps. 
 
