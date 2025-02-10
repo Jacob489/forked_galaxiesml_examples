@@ -292,7 +292,7 @@ sudo apt install nvidia-driver-535
 ```
 ubuntu-drivers devices
 ```
-**Note:** For compatibility with CUDA 11.8 and TensorFlow 2.11, you need a NVIDIA driver version at least greater than 450.80.02.  
+**Note:** For compatibility with CUDA 11.2 and TensorFlow 2.10, you need a NVIDIA driver version at least greater than 450.80.02.  
 
 
 ## Installing Miniconda:
@@ -385,7 +385,7 @@ and press enter
 
 *Example:*
 
-![Miniconda4](setup_images/Linux4.PNG)
+![GalaxiesEnv](setup_images/Linux4.PNG)
 
 ## Installing CUDA and cuDNN
 
@@ -393,9 +393,10 @@ and press enter
 
 Type:
 ```
-/home/your_username/miniconda3/bin/conda install -c conda-forge cudatoolkit=11.8 cudnn=8.4
+/home/your_username/miniconda3/bin/conda install -c conda-forge cudatoolkit=11.2 cudnn=8.1
 ```
 * Type "y" when prompted and press enter
+
 
 * CUDA and cuDNN should now successfully be installed, to confirm type:
 ``` 
@@ -420,3 +421,59 @@ git clone https://github.com/astrodatalab/galaxiesml_examples.git
 ```
 cd galaxiesml_examples
 ```
+
+## Installing Requirements
+**NOTE:** *Very important!* 
+
+For the below step, make sure to type "requirementsL.txt" NOT "requirementsW.txt".
+
+The "W" stands for Windows while the "L" stands for Linux, and they have different package versions. If you attempt to install the Windows requirementsW.txt you will run into errors.
+
+* Type 
+ 
+```
+/shared/jacob_software/miniconda3/bin/pip install -r requirementsL.txt
+```
+
+* Now verify that Tensorflow is working correctly
+```
+ python -c "import tensorflow as tf; print(tf.__version__)"
+ ```
+* This should return "2.10.0"
+
+* Next we need to verify that CUDA is properly configured 
+
+Type: 
+
+``` 
+python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
+```
+It should return a message that looks something like this: 
+
+![GPUTF](setup_images/Linux6.PNG)
+
+If you just have empty brackets "[ ]" it indicated Cuda has not been successfully installed/configured
+
+## Training the CNN
+ 
+ * Now you will need to adjust the paths in the train_cnn_v3.py script to where you have installed the datasets, for example:
+
+ ![Paths](setup_images/Datasets.PNG)
+
+* You can also adjust hyperparameters here if you wish, however this is optional
+
+### Training Parameters:
+- **--image_size**: Set to 64 or 127 depending on the dataset you downloaded
+- **--epochs**: Number of training epochs (default: 200)
+- **--batch_size**: Number of samples per training batch (default: 256)
+- **--learning_rate**: Learning rate for training (default: 0.0001)
+
+ * Save the file, then go back to your terminal
+ 
+ Type:
+
+ ```
+ python train_cnn_v3.py
+```
+ 
+Training progress will be displayed in the terminal, including loss values and other metrics. Checkpoints will be saved automatically during training to the specified directory (default:data2/) 
