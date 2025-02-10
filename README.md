@@ -320,12 +320,12 @@ chmod +x Miniconda3-py310_24.9.2-0-Linux-x86_64.sh
 ```
 * Press enter when prompted (hold enter key to scroll through terms and conditions)
 
-![Miniconda](setup_images/Linux1.png)
+![Miniconda](setup_images/Linux1.PNG)
  
 
 * When you get to the end type “yes” and press enter when prompted
 
-![Miniconda2](setup_images/Linux2.png)
+![Miniconda2](setup_images/Linux2.PNG)
 
 It will say something like: 
 
@@ -345,7 +345,7 @@ Miniconda3 will now be installed into this location:
 * When prompted, type “no” into the terminal. 
  
  
-![Miniconda3](setup_images/Linux3.png)
+![Miniconda3](setup_images/Linux3.PNG)
 
 * It should now say “Thank you for installing Miniconda3!” 
  
@@ -385,7 +385,7 @@ and press enter
 
 *Example:*
 
-![Miniconda4](setup_images/Linux4.png)
+![Miniconda4](setup_images/Linux4.PNG)
 
 ## Installing CUDA and cuDNN
 
@@ -406,6 +406,17 @@ which should return a CUDA version.
 ## Cloning the Repository
 * Now we need to clone the GitHub repo
 
-* If you are in the miniconda3 folder, navigate out of it to an appropriate folder to clone the repo, for example: "/home/your_username/downloads"
+* If you are in the miniconda3 folder, navigate out of it to an appropriate folder to clone the repo, for example: 
+```
+cd /home/your_username/downloads
+```
 
-* Next, type git clone (HTTPS link to repo) for example: "https://github.com/astrodatalab/galaxiesml_examples.git"
+* Next, type git clone (HTTPS link to repo) for example: 
+```
+git clone https://github.com/astrodatalab/galaxiesml_examples.git
+```
+* Then navigate into the directory
+
+```
+cd galaxiesml_examples
+```
